@@ -1,0 +1,9 @@
+﻿using System;
+
+public class Type1
+{
+   public void Execute()
+   {
+       Console.WriteLine("Hello, world.");
+   }
+}

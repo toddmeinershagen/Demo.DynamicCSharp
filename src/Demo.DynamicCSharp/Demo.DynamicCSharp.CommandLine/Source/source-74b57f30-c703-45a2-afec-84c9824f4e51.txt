@@ -1,0 +1,9 @@
+﻿using System;
+
+public class Type3
+{
+   public void Execute()
+   {
+	   Console.WriteLine("This causes an error")
+   }
+}
