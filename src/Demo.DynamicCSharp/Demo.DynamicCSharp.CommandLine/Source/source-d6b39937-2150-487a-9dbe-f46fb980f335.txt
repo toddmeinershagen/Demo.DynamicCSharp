@@ -1,8 +1,9 @@
 ﻿using System;
+using Demo.DynamicCSharp.CommandLine.Commands;
 
 public class Type2
 {
-   public void Execute()
+   public void Execute(Input input)
    {
 	   Console.WriteLine("This is a dynamic program for your reading pleasure.");
 	   var message = string.Format("{0}", DateTime.Now);

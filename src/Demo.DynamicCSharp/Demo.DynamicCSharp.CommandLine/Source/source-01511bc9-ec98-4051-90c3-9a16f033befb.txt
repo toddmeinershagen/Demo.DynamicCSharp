@@ -1,9 +1,10 @@
 ﻿using System;
+using Demo.DynamicCSharp.CommandLine.Commands;
 
 public class Type1
 {
-   public void Execute()
+   public void Execute(Input input)
    {
-       Console.WriteLine("Hello, world.");
+       Console.WriteLine("Hello, world.  The username is '{0}'.", input.Username);
    }
 }

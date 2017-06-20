@@ -20,7 +20,8 @@ namespace Demo.DynamicCSharp.CommandLine.Providers
             var parameters = new CompilerParameters
             {
                 GenerateInMemory = true,
-                GenerateExecutable = false
+                GenerateExecutable = false,
+                ReferencedAssemblies = { "Demo.DynamicCSharp.CommandLine.exe" }
             };
 
             var result = provider.CompileAssemblyFromSource(parameters, source);

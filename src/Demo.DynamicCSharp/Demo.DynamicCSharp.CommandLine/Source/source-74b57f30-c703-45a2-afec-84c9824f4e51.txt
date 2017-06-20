@@ -1,8 +1,9 @@
 ﻿using System;
+using Demo.DynamicCSharp.CommandLine.Commands;
 
 public class Type3
 {
-   public void Execute()
+   public void Execute(Input input)
    {
 	   Console.WriteLine("This causes an error")
    }

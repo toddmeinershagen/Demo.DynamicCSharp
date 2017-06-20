@@ -18,12 +18,12 @@ namespace Demo.DynamicCSharp.CommandLine.Commands
             _typeName = typeName;
         }
 
-        public void Execute()
+        public void Execute(Input input)
         {
             var source = _sourceProvider.GetSourceFor(_sourceId.ToString());
             var assembly = _assemblyProvider.GetAssemblyFor(source);
 
-            assembly.Execute(_typeName, "Execute", null);
+            assembly.Execute(_typeName, "Execute", input);
         }
     }
 }
