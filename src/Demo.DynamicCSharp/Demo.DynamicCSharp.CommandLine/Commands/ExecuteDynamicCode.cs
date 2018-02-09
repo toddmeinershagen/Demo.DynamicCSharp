@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Demo.DynamicCSharp.CommandLine.Providers;
 
 namespace Demo.DynamicCSharp.CommandLine.Commands
@@ -18,9 +19,9 @@ namespace Demo.DynamicCSharp.CommandLine.Commands
             _typeName = typeName;
         }
 
-        public void Execute(Input input)
+        public async Task Execute(Input input)
         {
-            var source = _sourceProvider.GetSourceFor(_sourceId.ToString());
+            var source = await _sourceProvider.GetSourceFor(_sourceId.ToString());
             var assembly = _assemblyProvider.GetAssemblyFor(source);
 
             assembly.Execute(_typeName, "Execute", input);

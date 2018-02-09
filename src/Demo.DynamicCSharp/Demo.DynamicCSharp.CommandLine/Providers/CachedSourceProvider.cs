@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using CommonGround.Caching;
 
 namespace Demo.DynamicCSharp.CommandLine.Providers
@@ -14,9 +15,9 @@ namespace Demo.DynamicCSharp.CommandLine.Providers
             _provider = provider;
         }
 
-        public string GetSourceFor(string sourceId)
+        public async Task<string> GetSourceFor(string sourceId)
         {
-            return Cache.GetOrAdd(sourceId, () => _provider.GetSourceFor(sourceId), DateTimeOffset.MaxValue);
+            return await Cache.GetOrAdd(sourceId, () => _provider.GetSourceFor(sourceId), DateTimeOffset.MaxValue);
         }
     }
 }

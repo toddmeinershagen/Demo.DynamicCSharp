@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Demo.DynamicCSharp.CommandLine.Commands
 {
     public class ExecuteStaticCode : ICommand
     {
-        public void Execute(Input input)
+        public async Task Execute(Input input)
         {
-            Console.WriteLine("Hello, world.");
+            await Console.Out.WriteLineAsync("Hello, world.");
         }
     }
 }

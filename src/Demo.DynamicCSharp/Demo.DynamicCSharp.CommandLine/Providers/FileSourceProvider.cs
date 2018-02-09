@@ -1,14 +1,15 @@
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Demo.DynamicCSharp.CommandLine.Providers
 {
     public class FileSourceProvider : ISourceProvider
     {
-        public string GetSourceFor(string sourceId)
+        public async Task<string> GetSourceFor(string sourceId)
         {
             var path = Path.Combine(Environment.CurrentDirectory, "Source", $"source-{sourceId}.txt");
-            return File.ReadAllText(path);
+            return await Task.FromResult(File.ReadAllText(path));
         }
     }
 }

@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace Demo.DynamicCSharp.CommandLine.Providers
 {
     public interface ISourceProvider
     {
-        string GetSourceFor(string sourceId);
+        Task<string> GetSourceFor(string sourceId);
     }
 }

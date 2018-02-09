@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace Demo.DynamicCSharp.CommandLine.Commands
 {
     public interface ICommand
     {
-        void Execute(Input input);
+        Task Execute(Input input);
     }
 }
