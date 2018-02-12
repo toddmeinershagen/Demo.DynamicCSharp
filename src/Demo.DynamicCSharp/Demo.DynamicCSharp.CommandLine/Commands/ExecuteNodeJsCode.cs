@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Demo.DynamicCSharp.CommandLine.Providers;
 using EdgeJs;
@@ -18,10 +19,34 @@ namespace Demo.DynamicCSharp.CommandLine.Commands
 
         public async Task Execute(Input input)
         {
-            var script = await _sourceProvider.GetSourceFor(_sourceId.ToString());
-            var func = Edge.Func(script);
+            try
+            {
+                var script = await _sourceProvider.GetSourceFor(_sourceId.ToString());
+                var func = Edge.Func(script);
 
-            await func(input);
+                await func(input);
+            }
+            catch (Exception ex)
+            {
+                throw GetException(ex);
+            }
         }
+
+        private Exception GetException(Exception ex)
+        {
+            var errorType = ex.InnerException.Message.Split(':').FirstOrDefault();
+            if (errorType == "BadRequestError")
+            {
+                return new BadRequestException(ex.InnerException.Message);
+            }
+
+            return ex;
+        }
+    }
+
+    public class BadRequestException : Exception
+    {
+        public BadRequestException(string message) : base(message)
+        { }
     }
 }
